@@ -66,11 +66,12 @@ button {
 }
 
 .nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   background-color: #fff;
   padding: 0.75rem 1rem;
+  z-index: 1;
 }
 
 .nav-logo {
@@ -184,6 +185,7 @@ button {
     display: flex;
     align-items: center;
     gap: 6rem;
+    padding: 12rem 1rem 5.5rem;
   }
 
   .header-container > * {

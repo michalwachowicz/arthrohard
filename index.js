@@ -32,6 +32,63 @@ const popup = (() => {
   return { open };
 })();
 
+const navScroll = (() => {
+  const navList = document.querySelector(".nav-list-desktop");
+  const navLinks = navList.querySelectorAll(".nav-list-link");
+  const sections = document.querySelectorAll(".section");
+
+  let values = {};
+
+  const createValues = () => {
+    values = {};
+
+    sections.forEach((section, index) => {
+      const rect = section.getBoundingClientRect();
+      const scrollY = window.scrollY;
+
+      values[section.id] = {
+        start: index === 0 ? 0 : scrollY + rect.top,
+        end: scrollY + rect.bottom,
+      };
+    });
+  };
+
+  const getCurrentSection = () => {
+    const scrollY = window.scrollY;
+
+    for (const [id, range] of Object.entries(values)) {
+      if (scrollY >= range.start && scrollY < range.end) {
+        return id;
+      }
+    }
+
+    return null;
+  };
+
+  const showActiveNavLink = (id) => {
+    navLinks.forEach((navLink) => {
+      const link = navLink.querySelector("a");
+      const href = link.href.split("#")[1];
+
+      if (id === href) {
+        navLink.classList.add("nav-list-link-active");
+      } else {
+        navLink.classList.remove("nav-list-link-active");
+      }
+    });
+  };
+
+  createValues();
+
+  window.addEventListener("resize", () => createValues());
+  window.addEventListener("scroll", () => {
+    const current = getCurrentSection();
+    if (!current) return;
+
+    showActiveNavLink(current);
+  });
+})();
+
 const products = (() => {
   const container = document.querySelector(".products");
   const select = document.querySelector("#products-count");
