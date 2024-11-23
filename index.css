@@ -32,7 +32,7 @@ button {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .container {
@@ -225,6 +225,12 @@ button {
   font-weight: 400;
   color: #000;
   background-color: #bebebe;
+}
+
+.btn-close {
+  color: #000;
+  padding: 0;
+  font-size: 2rem;
 }
 
 .list-ordered {
@@ -457,4 +463,39 @@ button {
   font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
+}
+
+.popup {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.popup-popup {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  max-width: 660px;
+  width: 95%;
+  color: #000;
+  background-color: #fff;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-title {
+  font-size: 2rem;
+}
+
+.popup-value {
+  padding: 4rem 0 2rem;
+  font-size: 2rem;
 }

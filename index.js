@@ -11,6 +11,27 @@ const menu = (() => {
   });
 })();
 
+const popup = (() => {
+  const element = document.querySelector(".popup");
+  const closeBtn = element.querySelector(".btn-close");
+  const title = element.querySelector(".popup-title");
+  const value = element.querySelector(".popup-value");
+
+  const open = (id, text) => {
+    element.classList.remove("hidden");
+    title.textContent = `ID: ${id}`;
+    value.textContent = `Wartość: ${text}`;
+  };
+
+  const close = () => {
+    element.classList.add("hidden");
+  };
+
+  closeBtn.addEventListener("click", () => close());
+
+  return { open };
+})();
+
 const products = (() => {
   const container = document.querySelector(".products");
   const select = document.querySelector("#products-count");
@@ -19,6 +40,9 @@ const products = (() => {
   const showModal = (e) => {
     const btn = e.target;
     const id = btn.dataset.id;
+    const text = btn.dataset.text;
+
+    popup.open(id, text);
   };
 
   const clear = () => {
