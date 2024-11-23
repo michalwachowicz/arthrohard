@@ -90,6 +90,8 @@ const navScroll = (() => {
 })();
 
 const products = (() => {
+  let generatedCount = 0;
+
   const container = document.querySelector(".products");
   const select = document.querySelector("#products-count");
   const btns = [];
@@ -125,17 +127,40 @@ const products = (() => {
     btns.push(btn);
   };
 
-  const generateProducts = async (size) => {
+  const getData = async (pages, size) => {
     const response = await fetch(
-      `https://brandstestowy.smallhost.pl/api/random?pageNumber=1&pageSize=${size}`
+      `https://brandstestowy.smallhost.pl/api/random?pageNumber=${pages}&pageSize=${size}`
     );
     const { data } = await response.json();
-    if (!data || !Array.isArray(data)) return;
+
+    return data;
+  };
+
+  const generateProducts = async (size) => {
+    const pages = Math.floor(size / 100) + 1;
+    const arr = [];
+
+    for (let i = 1; i <= pages; i++) {
+      const data = await getData(i, size);
+      if (data && Array.isArray(data)) arr.push(...data);
+    }
 
     clear();
-    data.forEach(addBtn);
+    arr.forEach(addBtn);
+
+    generatedCount = size;
   };
 
   select.addEventListener("change", (e) => generateProducts(e.target.value));
+  window.addEventListener("scroll", () => {
+    const rect = container.getBoundingClientRect();
+    const scrollY = window.scrollY;
+    const productsBottom = scrollY + rect.bottom;
+
+    if (window.scrollY + window.innerHeight >= productsBottom) {
+      generateProducts(generatedCount + 16);
+    }
+  });
+
   generateProducts(20);
 })();

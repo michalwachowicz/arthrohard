@@ -1,8 +1,6 @@
 /* 
 TODO:
 - Sections Parallax Effect
-- Get proper font
-- Test and fix bugs
 - Hover effects
 */
 
@@ -17,7 +15,7 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 img {
@@ -102,6 +100,7 @@ button {
 }
 
 .nav-list-link {
+  font-weight: 450;
   text-transform: uppercase;
 }
 
@@ -169,11 +168,13 @@ button {
 
 .header-title {
   font-size: clamp(1.25rem, 5vw, 2.5rem);
+  font-weight: 450;
 }
 
 .header-description {
-  font-size: clamp(0.85rem, 5vw, 1.25rem);
   margin-top: 1.25rem;
+  font-size: clamp(0.85rem, 5vw, 1.25rem);
+  font-weight: 400;
 }
 
 .header .btn {
@@ -271,6 +272,7 @@ button {
 
 .section-title {
   font-size: clamp(1.25rem, 5vw, 2rem);
+  font-weight: 450;
 }
 
 .section-inner {
@@ -288,6 +290,7 @@ button {
 
 .section-inner-title {
   font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 450;
 }
 
 .section-inner-list-ordered {
@@ -348,6 +351,17 @@ button {
 
 #section-sklad > .section-inner {
   margin-top: 4.5rem;
+}
+
+#section-wyroznienie .section-inner::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+#section-wyroznienie .section-inner:hover::after {
+  background-color: #111;
 }
 
 @media (min-width: 750px) {
