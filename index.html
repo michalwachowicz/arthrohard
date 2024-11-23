@@ -7,5 +7,54 @@
     <link rel="stylesheet" href="./index.css" />
     <script src="./index.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <nav class="nav">
+        <div class="nav-container">
+          <a class="nav-logo" href="#">
+            <img src="./assets/icons/logo.svg" alt="ARTHROHARD" />
+          </a>
+          <button
+            id="menu-btn"
+            type="button"
+            aria-label="Menu"
+            aria-controls="menu-mobile"
+            aria-expanded="false"
+          >
+            <img src="./assets/icons/menu.svg" alt="" />
+          </button>
+          <ul class="nav-list nav-list-desktop">
+            <li class="nav-list-link nav-list-link-active">
+              <a href="#">Co nas wyróżnia</a>
+            </li>
+            <li class="nav-list-link"><a href="#">Skład</a></li>
+            <li class="nav-list-link nav-list-link-strong">
+              <a href="#">Produkty</a>
+            </li>
+          </ul>
+        </div>
+        <ul
+          class="nav-list nav-list-mobile hidden"
+          id="menu-mobile"
+          role="menu"
+        >
+          <li class="nav-list-link nav-list-link-mobile" role="presentation">
+            <a href="#" role="menuitem">Działanie preparatu</a>
+          </li>
+          <li class="nav-list-link nav-list-link-mobile" role="presentation">
+            <a href="#" role="menuitem">Zalecenia</a>
+          </li>
+          <li class="nav-list-link nav-list-link-mobile" role="presentation">
+            <a href="#" role="menuitem">Skład</a>
+          </li>
+          <li class="nav-list-link nav-list-link-mobile" role="presentation">
+            <a href="#" role="menuitem">Dawkowanie</a>
+          </li>
+          <li class="nav-list-link nav-list-link-mobile" role="presentation">
+            <a href="#" role="menuitem">Opinie</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </body>
 </html>
