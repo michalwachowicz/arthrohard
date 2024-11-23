@@ -1,4 +1,7 @@
-/* TODO: Sections Parallax Effect */
+/* 
+TODO:
+- Sections Parallax Effect
+*/
 
 * {
   box-sizing: border-box;
@@ -25,6 +28,36 @@ button {
   display: none;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  background: linear-gradient(45deg, #111111, #b1b1b1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.title-highlight {
+  position: relative;
+  text-align: center;
+  padding-bottom: 1.25rem;
+}
+
+.title-highlight::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8.5rem;
+  height: 1px;
+  background-color: #111;
+}
+
 .nav {
   position: sticky;
   top: 0;
@@ -34,15 +67,13 @@ button {
 }
 
 .nav-logo {
-  width: 6rem;
+  width: clamp(6rem, 25vw, 15rem);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .nav-list {
@@ -88,8 +119,7 @@ button {
 }
 
 #menu-btn {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: clamp(1.5rem, 6vw, 3rem);
 }
 
 @media (min-width: 750px) {
@@ -107,10 +137,6 @@ button {
     display: flex;
     gap: 2.5rem;
   }
-
-  .nav-logo {
-    width: 15rem;
-  }
 }
 
 @media (min-width: 1000px) {
@@ -122,8 +148,6 @@ button {
 
 .header-container {
   padding: 4rem 1rem 5.5rem;
-  margin: 0 auto;
-  max-width: 1200px;
 }
 
 .header-logo {
@@ -136,15 +160,11 @@ button {
 }
 
 .header-title {
-  background: linear-gradient(45deg, #111111, #b1b1b1);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: 1.25rem;
+  font-size: clamp(1.25rem, 5vw, 2.5rem);
 }
 
 .header-description {
-  font-size: 0.85rem;
+  font-size: clamp(0.85rem, 5vw, 1.25rem);
   margin-top: 1.25rem;
 }
 
@@ -165,14 +185,6 @@ button {
 
   .header-info {
     text-align: start;
-  }
-
-  .header-title {
-    font-size: 2.5rem;
-  }
-
-  .header-description {
-    font-size: 1.25rem;
   }
 
   .header-logo {
@@ -196,4 +208,89 @@ button {
 
 .btn-positive {
   background-color: #30ab4c;
+}
+
+.list-ordered {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  list-style: none;
+  counter-reset: item;
+}
+
+.list-ordered-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  counter-increment: item;
+}
+
+.list-ordered-item::before {
+  content: counter(item);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.section {
+  padding: 4.5rem 1rem;
+}
+
+.section-title {
+  font-size: clamp(1.25rem, 5vw, 2rem);
+}
+
+.section-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section-inner-sections {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4.5rem;
+  gap: 4rem;
+}
+
+.section-inner-title {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+}
+
+.section-inner-list-ordered {
+  margin-top: 2rem;
+}
+
+.section-inner-description {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.section-inner-img {
+  border-radius: 2rem;
+}
+
+.section-inner > .section-inner-img,
+.section-inner-img-container {
+  margin-top: auto;
+}
+
+.section-inner-img-container {
+  display: flex;
+  gap: 1.25rem;
+}
+
+@media (min-width: 750px) {
+  .section-inner-sections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
