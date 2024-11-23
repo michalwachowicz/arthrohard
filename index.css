@@ -267,6 +267,8 @@ button {
 
 .section {
   padding: 4.5rem 1rem;
+  background: url(./assets/images/effects/effects-1.svg) no-repeat top / 100%
+    auto;
 }
 
 .section-title {
@@ -278,6 +280,11 @@ button {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+#section-wyroznienie .section-inner:nth-child(n + 2) {
+  background: url(./assets/images/effects/effects-4.svg) no-repeat top / 100%
+    auto;
 }
 
 .section-inner-sections {
@@ -333,6 +340,11 @@ button {
   gap: 1.25rem;
 }
 
+.section-ingredient:nth-child(n + 2) {
+  background: url(./assets/images/effects/effects-4.svg) no-repeat top / 100%
+    auto;
+}
+
 .section-ingredient > img {
   width: 2.5rem;
   height: 2.5rem;
@@ -351,6 +363,8 @@ button {
   margin-top: 1rem;
   max-width: 600px;
   margin: 0 auto;
+  background: url(./assets/images/effects/effects-2.svg) no-repeat top / 100%
+    auto;
 }
 
 #section-sklad {
@@ -385,6 +399,11 @@ button {
   #section-dzialanie {
     display: none;
   }
+
+  #section-wyroznienie .section-inner:nth-child(n + 2),
+  .section:nth-child(n + 3) {
+    background: none;
+  }
 }
 
 @media (min-width: 900px) {
@@ -414,10 +433,16 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background: url(./assets/images/effects/effects-3.svg) no-repeat center /
+      100%;
   }
 
   .section-ingredient {
     flex-basis: 20%;
+  }
+
+  .section-ingredient:nth-child(n + 2) {
+    background: none;
   }
 
   .section-ingredient:last-child {
