@@ -221,6 +221,12 @@ button {
   background-color: #ad4844;
 }
 
+.btn-product {
+  font-weight: 400;
+  color: #000;
+  background-color: #bebebe;
+}
+
 .list-ordered {
   display: flex;
   flex-direction: column;
@@ -391,4 +397,64 @@ button {
   #section-sklad > .section-inner {
     margin-top: 6.5rem;
   }
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+  gap: 2rem 3rem;
+}
+
+@media (min-width: 750px) {
+  .products {
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 7.5rem;
+  }
+}
+
+.products > .btn-product {
+  aspect-ratio: 1 / 1;
+}
+
+.products-select-container {
+  display: flex;
+  justify-content: center;
+}
+
+.products-select-container > label {
+  padding: 0.625rem;
+  border: 1px solid #ad4844;
+  font-size: 1.25rem;
+}
+
+.products-select {
+  position: relative;
+  border: none;
+  background-color: #ad4844;
+}
+
+.products-select::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 9px;
+  background-color: #fff;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  clip-path: polygon(0% 10%, 50% 90%, 100% 10%);
+}
+
+.products-select > select {
+  cursor: pointer;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  width: 100%;
+  padding: 0.625rem calc(0.625rem + 2.5rem + 15px) 0.625rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
 }
