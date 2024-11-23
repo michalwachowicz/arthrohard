@@ -1,7 +1,6 @@
 /* 
 TODO:
 - Sections Parallax Effect
-- Hover effects
 */
 
 * {
@@ -337,6 +336,15 @@ button {
 .section-ingredient > img {
   width: 2.5rem;
   height: 2.5rem;
+}
+
+.section-ingredient:hover .section-ingredient-title::after {
+  content: "";
+  display: block;
+  margin-top: 1.25rem;
+  height: 1px;
+  width: 100%;
+  background-color: #111;
 }
 
 .section-dog-img {
