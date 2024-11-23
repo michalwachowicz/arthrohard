@@ -157,10 +157,12 @@ const products = (() => {
     const scrollY = window.scrollY;
     const productsBottom = scrollY + rect.bottom;
 
-    if (window.scrollY + window.innerHeight >= productsBottom) {
+    if (generatedCount < 1 && scrollY >= scrollY + rect.top) {
+      generateProducts(20);
+    }
+
+    if (scrollY + window.innerHeight >= productsBottom) {
       generateProducts(generatedCount + 16);
     }
   });
-
-  generateProducts(20);
 })();
