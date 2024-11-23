@@ -1,3 +1,5 @@
+/* TODO: Sections Parallax Effect */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -24,7 +26,10 @@ button {
 }
 
 .nav {
-  position: relative;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
   padding: 0.75rem 1rem;
 }
 
@@ -55,7 +60,6 @@ button {
 
 .nav-list-desktop {
   display: none;
-  margin: 0 auto;
 }
 
 .nav-list-link {
@@ -107,4 +111,89 @@ button {
   .nav-logo {
     width: 15rem;
   }
+}
+
+@media (min-width: 1000px) {
+  .nav-list-desktop {
+    margin: 0 auto;
+    transform: translateX(-25%);
+  }
+}
+
+.header-container {
+  padding: 4rem 1rem 5.5rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.header-logo {
+  display: none;
+}
+
+.header-info {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.header-title {
+  background: linear-gradient(45deg, #111111, #b1b1b1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 1.25rem;
+}
+
+.header-description {
+  font-size: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.header .btn {
+  display: none;
+}
+
+@media (min-width: 750px) {
+  .header-container {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+  }
+
+  .header-container > * {
+    flex: 1;
+  }
+
+  .header-info {
+    text-align: start;
+  }
+
+  .header-title {
+    font-size: 2.5rem;
+  }
+
+  .header-description {
+    font-size: 1.25rem;
+  }
+
+  .header-logo {
+    display: block;
+    margin-bottom: 2rem;
+    width: 75%;
+  }
+
+  .header .btn {
+    display: initial;
+    margin-top: 1.25rem;
+  }
+}
+
+.btn {
+  padding: 0.625rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.btn-positive {
+  background-color: #30ab4c;
 }
