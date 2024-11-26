@@ -1,8 +1,3 @@
-/* 
-TODO:
-- Sections Parallax Effect
-*/
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -367,12 +362,28 @@ button {
   background-color: #111;
 }
 
-.section-dog-img {
-  margin-top: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  background: url(./assets/images/effects/effects-2.svg) no-repeat top / 100%
-    auto;
+.section-dog {
+  position: relative;
+  background-image: url(./assets/images/piesek.png);
+  height: 60vh;
+  margin: 1rem;
+}
+
+.section-dog::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(./assets/images/effects/effects-2.svg);
+  z-index: -1;
+}
+
+.section-dog,
+.section-dog::before {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 #section-sklad {
@@ -411,6 +422,11 @@ button {
   #section-wyroznienie .section-inner:nth-child(n + 2),
   .section:nth-child(n + 3) {
     background: none;
+  }
+
+  .section-dog,
+  .section-dog::before {
+    background-size: 50%;
   }
 }
 
