@@ -33,60 +33,27 @@ const popup = (() => {
 })();
 
 (() => {
-  const navList = document.querySelector(".nav-list-desktop");
-  const navLinks = navList.querySelectorAll(".nav-list-link");
+  const navLinks = document.querySelectorAll('.nav-list-desktop a[href^="#"]');
   const sections = document.querySelectorAll(".section");
 
-  let values = {};
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const link = document.querySelector(
+          `.nav-list-desktop a[href="#${entry.target.id}"]`
+        );
+        if (entry.isIntersecting) {
+          navLinks.forEach((navLink) => {
+            navLink.parentElement.classList.remove("nav-list-link-active");
+            link.parentElement.classList.add("nav-list-link-active");
+          });
+        }
+      });
+    },
+    { root: null, threshold: 0.2 }
+  );
 
-  const createValues = () => {
-    values = {};
-
-    sections.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      const scrollY = window.scrollY;
-
-      values[section.id] = {
-        start: index === 0 ? 0 : scrollY + rect.top,
-        end: scrollY + rect.bottom,
-      };
-    });
-  };
-
-  const getCurrentSection = () => {
-    const scrollY = window.scrollY;
-
-    for (const [id, range] of Object.entries(values)) {
-      if (scrollY >= range.start && scrollY < range.end) {
-        return id;
-      }
-    }
-
-    return null;
-  };
-
-  const showActiveNavLink = (id) => {
-    navLinks.forEach((navLink) => {
-      const link = navLink.querySelector("a");
-      const href = link.href.split("#")[1];
-
-      if (id === href) {
-        navLink.classList.add("nav-list-link-active");
-      } else {
-        navLink.classList.remove("nav-list-link-active");
-      }
-    });
-  };
-
-  createValues();
-
-  window.addEventListener("resize", () => createValues());
-  window.addEventListener("scroll", () => {
-    const current = getCurrentSection();
-    if (!current) return;
-
-    showActiveNavLink(current);
-  });
+  sections.forEach((section) => observer.observe(section));
 })();
 
 const error = (() => {
@@ -96,12 +63,12 @@ const error = (() => {
   const show = (msg) => {
     element.classList.remove("hidden");
     message.textContent = msg;
-  }
+  };
 
   const hide = () => {
     element.classList.add("hidden");
     message.textContent = "";
-  }
+  };
 
   return { show, hide };
 })();
