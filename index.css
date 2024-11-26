@@ -555,3 +555,13 @@ button {
   padding: 4rem 0 2rem;
   font-size: 2rem;
 }
+
+.error {
+  color: red;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.error-message {
+  margin-top: 0.5rem;
+}

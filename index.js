@@ -1,9 +1,9 @@
-const menu = (() => {
+(() => {
   const btn = document.querySelector("#menu-btn");
   const menu = document.querySelector("#menu-mobile");
 
   btn.addEventListener("click", () => {
-    const expaned = btn.ariaExpanded === "true" ? true : false;
+    const expaned = btn.ariaExpanded === "true";
     btn.ariaExpanded = !expaned;
 
     if (expaned) menu.classList.add("hidden");
@@ -32,7 +32,7 @@ const popup = (() => {
   return { open };
 })();
 
-const navScroll = (() => {
+(() => {
   const navList = document.querySelector(".nav-list-desktop");
   const navLinks = navList.querySelectorAll(".nav-list-link");
   const sections = document.querySelectorAll(".section");
@@ -89,7 +89,24 @@ const navScroll = (() => {
   });
 })();
 
-const products = (() => {
+const error = (() => {
+  const element = document.querySelector(".error");
+  const message = element.querySelector(".error-message");
+
+  const show = (msg) => {
+    element.classList.remove("hidden");
+    message.textContent = msg;
+  }
+
+  const hide = () => {
+    element.classList.add("hidden");
+    message.textContent = "";
+  }
+
+  return { show, hide };
+})();
+
+(() => {
   let generatedCount = 0;
 
   const container = document.querySelector(".products");
@@ -140,9 +157,15 @@ const products = (() => {
     const pages = Math.floor(size / 100) + 1;
     const arr = [];
 
+    error.hide();
+
     for (let i = 1; i <= pages; i++) {
-      const data = await getData(i, size);
-      if (data && Array.isArray(data)) arr.push(...data);
+      try {
+        const data = await getData(i, size);
+        if (data && Array.isArray(data)) arr.push(...data);
+      } catch (err) {
+        error.show(err);
+      }
     }
 
     clear();
