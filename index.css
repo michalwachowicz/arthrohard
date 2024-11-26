@@ -114,9 +114,15 @@ button {
 }
 
 .nav-list-link-mobile {
-  color: #fff;
+  color: #d8d8d8;
   text-transform: uppercase;
   margin: 1.25rem;
+}
+
+.nav-list-link-mobile:hover,
+.nav-list-link-mobile:active,
+.nav-list-link-mobile.nav-list-link-active {
+  color: #fff;
 }
 
 #menu-btn {
