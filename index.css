@@ -350,12 +350,20 @@ button {
   height: 2.5rem;
 }
 
-.section-ingredient:hover .section-ingredient-title::after {
+.section-ingredient-amount {
+  margin-top: 0.625rem;
+}
+
+.section-ingredient .section-ingredient-title::after {
   content: "";
   display: block;
-  margin-top: 1.25rem;
+  margin-top: 0.625rem;
   height: 1px;
   width: 100%;
+  background: none;
+}
+
+.section-ingredient:hover .section-ingredient-title::after {
   background-color: #111;
 }
 
@@ -415,13 +423,12 @@ button {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 4rem 50%;
+    gap: 4rem 40%;
   }
 
   .section-ingredients-btn {
     display: initial;
     position: absolute;
-    bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -429,7 +436,7 @@ button {
   .section-ingredients-img-container {
     position: absolute;
     margin: auto;
-    width: 50%;
+    width: 40%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -438,7 +445,7 @@ button {
   }
 
   .section-ingredient {
-    flex-basis: 20%;
+    flex-basis: 25%;
   }
 
   .section-ingredient:nth-child(n + 2) {
