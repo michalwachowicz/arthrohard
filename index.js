@@ -33,20 +33,26 @@ const popup = (() => {
 })();
 
 (() => {
-  const navLinks = document.querySelectorAll('.nav-list-desktop a[href^="#"]');
+  const navLinks = document.querySelectorAll('.nav-list a[href^="#"]');
   const sections = document.querySelectorAll(".section");
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const link = document.querySelector(
-          `.nav-list-desktop a[href="#${entry.target.id}"]`
+        const links = document.querySelectorAll(
+          `.nav-list a[href="#${entry.target.id}"]`
         );
+
         if (entry.isIntersecting) {
           navLinks.forEach((navLink) => {
             navLink.parentElement.classList.remove("nav-list-link-active");
-            link.parentElement.classList.add("nav-list-link-active");
           });
+
+          if (links && links.length > 0) {
+            links.forEach((link) =>
+              link.parentElement.classList.add("nav-list-link-active")
+            );
+          }
         }
       });
     },
